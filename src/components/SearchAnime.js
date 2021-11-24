@@ -1,14 +1,27 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function SearchAnime() {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchText, setSearch] = useState("");
   useEffect(() => {
-    fetch(`https://api.aniapi.com/v1/anime/`)
-      .then((res) => res.json())
-      .then((json) => setData(json));
+    async function fetchData() {
+      let response = await axios.get("https://api.aniapi.com/v1/anime/");
+      const { documents } = response.data.data;
+      setData(documents);
+      setFilteredData(documents);
+    }
+    fetchData();
   }, []);
 
   console.log(data);
+  const hadleSearch = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+    const filteredData = data.filter((item) => item.titles.en.includes(value));
+    setFilteredData(filteredData);
+  };
   return (
     <div>
       <form className="search">
@@ -19,10 +32,15 @@ function SearchAnime() {
           type="text"
           id="header-search"
           placeholder="Search For Anime"
-          name="s"
+          name="search"
+          value={searchText}
+          onChange={hadleSearch}
         />
         <button type="submit">Search</button>
       </form>
+      {filteredData.map((item) => (
+        <h2>{item.titles.en}</h2>
+      ))}
     </div>
   );
 }

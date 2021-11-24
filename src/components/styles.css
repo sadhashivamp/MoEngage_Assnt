@@ -1,8 +1,6 @@
 .Container {
-  width: 100%;
-  height: 100px;
   display: flex;
-  background-color: red;
+  background-color: tomato;
   text-decoration: none;
   align-items: center;
 }

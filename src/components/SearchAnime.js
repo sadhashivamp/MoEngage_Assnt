@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function SearchAnime() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch(`https://api.aniapi.com/v1/anime?documents=Anime[56]`)
+    fetch(`https://api.aniapi.com/v1/anime/`)
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);

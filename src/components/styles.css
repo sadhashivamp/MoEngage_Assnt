@@ -1,0 +1,31 @@
+.Container {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  background-color: red;
+  text-decoration: none;
+  align-items: center;
+}
+span {
+  font-size: 32px;
+  font-family: 900;
+  color: white;
+  margin: 50px;
+  text-shadow: 2px 2px 4px #000000;
+}
+.links {
+  position: relative;
+  left: 60%;
+
+  /* padding-bottom: 50px;
+  padding-top: 50px; */
+}
+
+/* @Home Component */
+.links-1 {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  padding-right: 50px;
+}

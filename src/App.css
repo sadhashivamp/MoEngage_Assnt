@@ -1,0 +1,10 @@
+.App {
+  margin: 10px 10px;
+}
+.search {
+  position: relative;
+  left: 40%;
+}
+.search button {
+  margin-left: 40%;
+}

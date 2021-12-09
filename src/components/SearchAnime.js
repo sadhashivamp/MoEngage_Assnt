@@ -5,6 +5,7 @@ function SearchAnime() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearch] = useState("");
+
   useEffect(() => {
     async function fetchData() {
       let response = await axios.get("https://api.aniapi.com/v1/anime/");
@@ -26,43 +27,28 @@ function SearchAnime() {
   return (
     <div>
       <form className="search">
-        <label htmlFor="header-search">
-          <span className="visually-hidden">Search Anime</span>
-        </label>
         <input
+          className="input"
           type="text"
-          id="header-search"
           placeholder="Search For Anime"
-          name="search"
           value={searchText}
           onChange={hadleSearch}
         />
+        <button className="submit">Search</button>
       </form>
 
-      <div className="anime">
-        <h1>Anime Page</h1>
-        <table>
-          <tr>
-            <th>titles.en</th>
-            <th>trailer_url</th>
-            <th>genres</th>
-            <th>season_year</th>
-            <th>episodes_count</th>
-            <th>descriptions.en</th>
+      <div className="card">
+        {filteredData.map((item) => (
+          <div className="card_data">
+            <img src={item.cover_image} alt="" />
 
-            <th>episode_duration</th>
-          </tr>
-          {filteredData.map((item) => (
-            <tr>
-              <td>{item.titles.en}</td>
-              <td>{item.trailer_url}</td>
-              <td>{item.genres}</td>
-              <td>{item.season_year}</td>
-              <td>{item.episodes_count}</td>
-              <td>{item.descriptions.en}</td>
-            </tr>
-          ))}
-        </table>
+            <h3>{item.titles.en}</h3>
+            <h3>Year:{item.season_year}</h3>
+            <a href={item.trailer_url} atr="#">
+              Trailer
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );

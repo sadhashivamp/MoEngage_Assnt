@@ -125,7 +125,7 @@ function Signin() {
           />
           <br />
           <Link to="/login">
-            <input type="submit" value="Submit" />
+            <input className="submit" type="submit" value="Submit" />
           </Link>
         </form>
       </header>

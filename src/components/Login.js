@@ -49,7 +49,9 @@ function Login() {
           />
           <br />
           <NavLink to="/searchanime">
-            <button type="submit">Login</button>
+            <button className="submit" type="submit">
+              Login
+            </button>
           </NavLink>
         </form>
       </header>
